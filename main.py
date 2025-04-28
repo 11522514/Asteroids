@@ -35,6 +35,10 @@ def main():
         screen.fill(pygame.Color(0,0,0,0))
         updatable.update(dt)
         for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collision_detection(shot):
+                    shot.kill()
+                    asteroid.kill()
             if player.collision_detection(asteroid):
                 print("Game over!")
                 sys.exit()
